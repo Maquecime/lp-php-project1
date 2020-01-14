@@ -16,3 +16,4 @@ framework:
         log: true
 
     default_locale: fr
+    translator: { fallback: fr }
