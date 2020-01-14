@@ -20,11 +20,11 @@ class HelloWorldController extends AbstractController
 {
     /**
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/helloworld", name="helloworld")
+     * @Route("/helloworld/{name}", name="helloworld", defaults= {"name": "Inconnu"})
      */
-    public function indexAction() {
+    public function indexAction(String $name) {
         return $this->render("HelloWorld/helloworld.html.twig", [
-            "name" => "Maxime & Théo"
+            "name" => $name
         ]);
     }
 }
