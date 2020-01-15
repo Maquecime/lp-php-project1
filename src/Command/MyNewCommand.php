@@ -25,14 +25,15 @@ class MyNewCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $configDirectories = [__DIR__.'/../../'];
+        $fileDirectories = [__DIR__.'/../../'];
 
-        $fileLocator = new FileLocator($configDirectories);
+        $fileLocator = new FileLocator($fileDirectories);
         $yamlUserFiles = $fileLocator->locate('listPersonne.yml', null, false);
         $users = Yaml::parseFile($yamlUserFiles[0]);
         foreach ($users['personnes'] as $personne) {
             print $personne . "\xA";
         }
+        exit(0);
     }
 
 

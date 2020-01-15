@@ -1,0 +1,30 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Content</th>
+    <th scope="col">Price</th>
+    <th scope="col">Created At</th>
+    </tr>
+    </thead>
+        {% for a in annonces %}
+            <tr>
+                <th>
+                {{ a.title }}
+                </th>
+                <td>
+                {{ a.content }}
+                </td>
+                <td>
+                {{ a.price }}
+                </td>
+                <td>
+                {{ a.createdAt|date('y-m-d') }}
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+{% endblock %}
