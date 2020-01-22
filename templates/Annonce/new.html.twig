@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="col-md-8">
+
+
+    </div>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+
+    <label>
+
+        <p class="label-txt">
+            {{ form_label(form.title) }}
+        </p>
+
+            {{ form_widget(form.title) }}
+    </label>
+    <label>
+        <p class="label-txt">
+            {{ form_label(form.content) }}
+        </p>
+        {{ form_widget(form.content) }}
+
+    </label>
+    <label>
+
+
+        <p class="label-txt"> {{ form_label(form.price) }}</p>
+        {{ form_widget(form.price) }}
+
+    </label>
+    {{ form_row(form.save) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

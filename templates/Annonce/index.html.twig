@@ -4,22 +4,28 @@
     <table class="table">
     <thead class="thead-dark">
     <tr>
-    <th scope="col">Title</th>
-    <th scope="col">Content</th>
-    <th scope="col">Price</th>
-    <th scope="col">Created At</th>
+    <th scope="col">{{ 'annonces.form.header.title'|trans }}</th>
+    <th scope="col">{{ 'annonces.form.header.content'|trans }}</th>
+    <th scope="col">{{ 'annonces.form.header.price'|trans }}</th>
+    <th scope="col">{{ 'annonces.form.header.category'|trans }}</th>
+    <th scope="col">{{ 'annonces.form.header.created_at'|trans }}</th>
     </tr>
     </thead>
         {% for a in annonces %}
             <tr>
-                <th>
+                <th class="col-md-4">
                 {{ a.title }}
                 </th>
-                <td>
+                <td class="col-md-4">
                 {{ a.content }}
                 </td>
-                <td>
-                {{ a.price }}
+                <td class="col-md-1">
+                {{ a.price|number_format(2, '.', ' ') }}
+                </td>
+                <td class="col-md-1">
+                    {% if a.category %}
+                        {{ a.category.name }}
+                    {% endif %}
                 </td>
                 <td>
                 {{ a.createdAt|date('y-m-d') }}

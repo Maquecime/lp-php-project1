@@ -1,1 +1,15 @@
 helloworld: "Hello"
+
+app:
+  annonces:
+    index: "Liste des annonces"
+    new: "Ajouter une annonce"
+
+annonces:
+  form:
+    header:
+      title: "Titre"
+      content: "Contenu"
+      price: "Prix"
+      category: "Catégorie"
+      created_at: "Créée le"

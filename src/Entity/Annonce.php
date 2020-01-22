@@ -38,6 +38,13 @@ class Annonce
      */
     private $createdAt;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="annonces", cascade={"persist"})
+     */
+    private $category;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,4 +97,22 @@ class Annonce
 
         return $this;
     }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
+
+
 }
