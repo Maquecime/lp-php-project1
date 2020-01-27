@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -12,7 +12,7 @@
             <div class="col-sm-4">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
                     <a class="navbar-brand" href="#">
-                        <img  style="width: 100px" src="image.png" alt=" logo" >
+                        <img src="{{asset('images/app_logo.jpg')}}" title="my image" alt="My image" style="width: 50px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,6 @@
                 </button>
             </div>
         </div>
-        <h1> Mon site</h1>
 
         {% block body %}{% endblock %}
         {% block javascripts %}

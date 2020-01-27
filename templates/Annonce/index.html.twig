@@ -1,36 +1,97 @@
 
 {% extends 'base.html.twig' %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('cardsCss') }}
+        {% endblock %}
 {% block body %}
-    <table class="table">
-    <thead class="thead-dark">
-    <tr>
-    <th scope="col">{{ 'annonces.form.header.title'|trans }}</th>
-    <th scope="col">{{ 'annonces.form.header.content'|trans }}</th>
-    <th scope="col">{{ 'annonces.form.header.price'|trans }}</th>
-    <th scope="col">{{ 'annonces.form.header.category'|trans }}</th>
-    <th scope="col">{{ 'annonces.form.header.created_at'|trans }}</th>
-    </tr>
-    </thead>
-        {% for a in annonces %}
-            <tr>
-                <th class="col-md-4">
-                {{ a.title }}
-                </th>
-                <td class="col-md-4">
-                {{ a.content }}
-                </td>
-                <td class="col-md-1">
-                {{ a.price|number_format(2, '.', ' ') }}
-                </td>
-                <td class="col-md-1">
-                    {% if a.category %}
-                        {{ a.category.name }}
-                    {% endif %}
-                </td>
-                <td>
-                {{ a.createdAt|date('y-m-d') }}
-                </td>
-            </tr>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Poppins" rel="stylesheet">
+    <section class="section-tours">
+        <div class=" text-center  u-margin-bottom-medium">
+            <br>  <br>  <h2 class="heading-secondary">
+                Les annonces
+            </h2>
+            <br>  <br>
+        </div>
+        {% set nbRows = (annonces|length /3)|round(0,'ceil') %}
+        {% set indexStart = 0 %}
+        {% for i in 0..nbRows-1 %}
+        <div class="row">
+            {% for a in annonces|slice(indexStart, 3) %}
+                {% set imgIndex = 1%}
+            <div class="col-1-of-3">
+                <div class="card">
+                    <div class="card__side card__side--front">
+                        <div class="card__picture card__picture--{{loop.index}}">
+                             
+                        </div>
+                        <h4 class="card__heading">
+                            <span class="card__heading-span card__heading-span--{{loop.index}}">{{ a.title }}</span>
+
+                        </h4>
+                        <div class="card__details">
+                            <ul>
+                                {% if a.category %}
+                                <li>{{ a.category.name }}</li>
+                                {% endif %}
+                                <li>{{ a.content }}</li>
+                                <li>
+                                    {{ a.createdAt|date('y-m-d') }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card__side card__side--back card__side--back-{{loop.index}}">
+                        <div class="card__cta">
+                            <div class="card__price-box">
+                                <p class="card__price-only">Only</p>
+                                <p class="card__price-value">{{  a.price|number_format(2, '.', ' ') }}</p>
+                            </div>
+                            <a href="#0" class="btn btn--white">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% set imgIndex = imgIndex+1 %}
             {% endfor %}
-    </table>
+            {% set indexStart = indexStart + 3 %}
+        </div>
+        {% endfor %}
+        <div class="text-center u-margin-top-big">
+            <a href="#0" class="btn btn--blue">Discover All Tour</a>
+        </div>
+    </section>
+{#    <table class="table">#}
+{#    <thead class="thead-dark">#}
+{#    <tr>#}
+{#    <th scope="col">{{ 'annonces.form.header.title'|trans }}</th>#}
+{#    <th scope="col">{{ 'annonces.form.header.content'|trans }}</th>#}
+{#    <th scope="col">{{ 'annonces.form.header.price'|trans }}</th>#}
+{#    <th scope="col">{{ 'annonces.form.header.category'|trans }}</th>#}
+{#    <th scope="col">{{ 'annonces.form.header.created_at'|trans }}</th>#}
+{#    </tr>#}
+{#    </thead>#}
+{#        {% for a in annonces %}#}
+{#            <tr>#}
+{#                <th class="col-md-4">#}
+{#                {{ a.title }}#}
+{#                </th>#}
+{#                <td class="col-md-4">#}
+{#                {{ a.content }}#}
+{#                </td>#}
+{#                <td class="col-md-1">#}
+{#                {{ a.price|number_format(2, '.', ' ') }}#}
+{#                </td>#}
+{#                <td class="col-md-1">#}
+{#                    {% if a.category %}#}
+{#                        {{ a.category.name }}#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#                <td>#}
+{#                {{ a.createdAt|date('y-m-d') }}#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#    </table>#}
+
 {% endblock %}
