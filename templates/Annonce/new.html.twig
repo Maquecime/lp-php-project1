@@ -1,37 +1,47 @@
 {% extends 'base.html.twig' %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('formCss') }}
+        {% endblock %}
 {% block body %}
-    <div class="col-md-8">
-
-
-    </div>
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-
-
-    <label>
-
-        <p class="label-txt">
-            {{ form_label(form.title) }}
-        </p>
-
-            {{ form_widget(form.title) }}
-    </label>
-    <label>
-        <p class="label-txt">
-            {{ form_label(form.content) }}
-        </p>
-        {{ form_widget(form.content) }}
-
-    </label>
-    <label>
-
-
-        <p class="label-txt"> {{ form_label(form.price) }}</p>
-        {{ form_widget(form.price) }}
-
-    </label>
-    {{ form_row(form.save) }}
-
-    {{ form_end(form) }}
-
+    <section id="contact">
+        <div class="section-content">
+            <h1 class="section-header">Ajoutez<span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> une Annonce</span></h1>
+            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+        </div>
+        <div class="contact-section">
+            <div class="container">
+                <form>
+                    <div class="row">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <div class="col-md-6 form-line">
+                        <div class="form-group">
+                            <label>{{ form_label(form.title) }}</label>
+                            {{ form_widget(form.title) }}
+                        </div>
+                        <div class="form-group">
+                            <label>{{ form_label(form.price) }}</label>
+                            {{ form_widget(form.price) }}
+                        </div>
+                        <div class="form-group">
+                            <label>{{ form_label(form.category) }}</label>
+                            {{ form_widget(form.category) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ form_label(form.content) }}</label>
+                            {{ form_widget(form.content) }}
+                        </div>
+                        <div>
+                            {{ form_row(form.save) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -36,10 +36,20 @@ class AnnonceType extends AbstractType
         $categories = [$cat1, $cat2];
 
         $builder
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('price', MoneyType::class)
-            ->add('save', SubmitType::class)
+            ->add('title', TextType::class, [
+
+                'attr' => ['class' => 'form-control','placeholder' => 'Titre'],
+            ])
+            ->add('content', TextareaType::class, [
+                'attr' => ['class' => 'form-control','placeholder' => 'Contenu'],
+
+            ])
+            ->add('price', MoneyType::class, [
+                'attr' => ['class' => 'form-control','placeholder' => 'Prix'],
+            ])
+            ->add('save', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-default submit'],
+            ])
         ;
 
         $builder->add('category', ChoiceType::class, [
