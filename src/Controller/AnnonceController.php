@@ -70,4 +70,34 @@ class AnnonceController extends AbstractController
 
     }
 
+    /**
+     * @param Request $request
+     * @param Annonce $a
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/edit/{id}", requirements={"id"= "\d+"}, name="annonces_edit")
+     */
+    public function editAction(Request $request, Annonce $a)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(AnnonceType::class, $a);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ad = $form->getData();
+
+            $em->persist($ad);
+            $em->flush();
+
+            return $this->redirectToRoute("annonces_index");
+
+        }
+
+        return $this->render('Annonce/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

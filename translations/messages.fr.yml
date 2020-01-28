@@ -4,6 +4,9 @@ app:
   annonces:
     index: "Liste des annonces"
     new: "Ajouter une annonce"
+  form:
+    action:
+      edit: "Modifier"
 
 annonces:
   form:

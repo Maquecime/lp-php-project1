@@ -26,7 +26,7 @@
                              
                         </div>
                         <h4 class="card__heading">
-                            <span class="card__heading-span card__heading-span--{{loop.index}}">{{ a.title }}</span>
+                            <span class="card__heading-span card__heading-span--{{loop.index}}">{{ a.title|truncate(20) }}</span>
 
                         </h4>
                         <div class="card__details">
@@ -34,7 +34,7 @@
                                 {% if a.category %}
                                 <li>{{ a.category.name }}</li>
                                 {% endif %}
-                                <li>{{ a.content }}</li>
+                                <li>{{ a.content|truncate(150) }}</li>
                                 <li>
                                     {{ a.createdAt|date('y-m-d') }}
                                 </li>
@@ -45,9 +45,9 @@
                         <div class="card__cta">
                             <div class="card__price-box">
                                 <p class="card__price-only">Only</p>
-                                <p class="card__price-value">{{  a.price|number_format(2, '.', ' ') }}</p>
+                                <p class="card__price-value">{{  a.price|number_format(2, '.', ' ') }}€</p>
                             </div>
-                            <a href="#0" class="btn btn--white">Book Now</a>
+                            <a href="{{ path('annonces_edit', {id: a.id}) }}" class="btn btn--white">{{ 'app.form.action.edit'|trans }}</a>
                         </div>
                     </div>
                 </div>
