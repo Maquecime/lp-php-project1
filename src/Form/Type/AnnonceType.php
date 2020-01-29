@@ -11,6 +11,7 @@ namespace App\Form\Type;
 
 use App\Entity\Annonce;
 use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
@@ -27,14 +28,6 @@ class AnnonceType extends AbstractType
 
         public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $cat1 = new Category();
-        $cat1->setName('Type 1');
-        $cat1->setColor('Bleue');
-        $cat2 = new Category();
-        $cat2->setName('Type 2');
-        $cat2->setColor('Rouge');
-        $categories = [$cat1, $cat2];
-
         $builder
             ->add('title', TextType::class, [
 
@@ -52,15 +45,9 @@ class AnnonceType extends AbstractType
             ])
         ;
 
-        $builder->add('category', ChoiceType::class, [
-            'choices' => $categories,
-
-            'choice_label' => function(Category $category, $key, $value) {
-                return strtoupper($category->getName());
-            },
-            'choice_attr' => function(Category $category, $key, $value) {
-                return ['class' => 'category_'.strtolower($category->getName())];
-            },
+        $builder->add('category', EntityType::class, [
+            'class' => Category::class,
+            'choice_label' => 'name'
         ]);
     }
 

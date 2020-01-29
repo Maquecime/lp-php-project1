@@ -1,17 +1,18 @@
 <!DOCTYPE html><!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Mon site{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('navbar') }}
         {% endblock %}
     </head>
-    <body>
+    <header>
         <div class="row" style="margin-bottom: 2%">
             <div class="col-sm-4">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ path('dashboard_index') }}">
                         <img src="{{asset('images/app_logo.jpg')}}" title="my image" alt="My image" style="width: 50px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -24,6 +25,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('annonces_new') }}">{{ 'app.annonces.new'|trans }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('category_index') }}">{{ 'app.category.index'|trans }}</a>
                             </li>
 
                         </ul>
@@ -38,9 +42,12 @@
             </div>
         </div>
 
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+
+    </header>
+    <body>
+    {% block body %}{% endblock %}
     </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </html>

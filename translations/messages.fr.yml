@@ -1,6 +1,8 @@
 helloworld: "Hello"
 
 app:
+  category:
+    index: "Liste des catégories"
   annonces:
     index: "Liste des annonces"
     new: "Ajouter une annonce"
