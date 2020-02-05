@@ -108,6 +108,9 @@
     "egulias/email-validator": {
         "version": "2.1.13"
     },
+    "friendsofsymfony/user-bundle": {
+        "version": "v2.1.2"
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
@@ -436,6 +439,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.2"
+    },
+    "symfony/templating": {
+        "version": "v4.4.4"
     },
     "symfony/test-pack": {
         "version": "v1.0.6"

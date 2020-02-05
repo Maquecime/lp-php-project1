@@ -17,3 +17,6 @@ framework:
 
     default_locale: fr
     translator: { fallback: fr }
+
+    templating:
+        engines: ['twig']
